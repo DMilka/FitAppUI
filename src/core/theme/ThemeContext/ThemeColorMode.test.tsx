@@ -56,4 +56,21 @@ describe('ThemeColorMode', () => {
         const component = screen.queryByText(LIGHT_MODE, {exact: true});
         expect(component).not.toBeNull();
     });
+
+    it('check if background is white on light mode', function () {
+        localStorage.setItem(USER_COLOR_MODE, LIGHT_MODE);
+
+        render(<ThemeColorMode><div></div></ThemeColorMode>);
+        const body = document.body;
+        const bodyStyles = getComputedStyle(body);
+        expect(bodyStyles.backgroundColor).toBe('rgb(255, 255, 255)');
+    })
+    it('check if background is dark on dark mode', function () {
+        localStorage.setItem(USER_COLOR_MODE, DARK_MODE);
+
+        render(<ThemeColorMode><div></div></ThemeColorMode>);
+        const body = document.body;
+        const bodyStyles = getComputedStyle(body);
+        expect(bodyStyles.backgroundColor).toBe('rgb(18, 18, 18)');
+    })
 })

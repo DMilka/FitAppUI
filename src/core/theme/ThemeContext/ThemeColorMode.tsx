@@ -1,6 +1,7 @@
-import React, {useState} from 'react';
-import {createTheme, ThemeProvider} from "@mui/material";
+import React, {useEffect, useState} from 'react';
+import {createTheme, CssBaseline, ThemeProvider} from "@mui/material";
 import {LocalStorageHelper} from "../../localStorage/LocalStorageHelper";
+import { GlobalStyles } from '@mui/material';
 
 interface ColorModeContextProps {
     children: React.ReactNode;
@@ -21,6 +22,7 @@ const ThemeColorMode: React.FC<ColorModeContextProps> = (props) => {
         LocalStorageHelper.addItem(USER_COLOR_MODE, LIGHT_MODE);
     }
     const [mode, setMode] = useState<'light' | 'dark'>(userColorMode);
+    const [globalStyleComponent, setGlobalStyleComponent] = useState<React.ReactElement | null>(null);
     const colorMode = React.useMemo(
         () => ({
             toggleColorMode: () => {
@@ -30,19 +32,33 @@ const ThemeColorMode: React.FC<ColorModeContextProps> = (props) => {
         [],
     );
 
-    const theme = React.useMemo(
-        () =>
-            createTheme({
-                palette: {
-                    mode,
-                },
-            }),
-        [mode],
-    );
+    const theme = createTheme({
+        palette: {
+            mode,
+    }});
+
+    useEffect(() => {
+        if(mode === DARK_MODE) {
+            setGlobalStyleComponent(<GlobalStyles
+                styles={{
+                    body: {
+                        backgroundColor: 'background.default',
+                        color: 'text.primary',
+                    },
+                }}
+            />)
+        } else {
+            setGlobalStyleComponent(null);
+        }
+    }, [mode]);
+
+
 
     return (
         <ColorModeContext.Provider value={colorMode}>
             <ThemeProvider theme={theme}>
+                <CssBaseline />
+                {globalStyleComponent}
                 {props.children}
             </ThemeProvider>
         </ColorModeContext.Provider>
