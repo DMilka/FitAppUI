@@ -2,7 +2,7 @@ import React, {MouseEventHandler} from 'react';
 import {Button as ButtonMUI} from "@mui/material";
 
 export interface ButtonTemplateInterface {
-    label: string | number
+    label: string | number | React.ReactElement
     onClick: MouseEventHandler
     disabled?: boolean,
     variant?: 'text' | 'default'

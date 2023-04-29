@@ -4,12 +4,15 @@ import {Box, useTheme} from "@mui/material";
 interface ContainerInterface {
     children: React.ReactNode;
     width?: number
-    height?: number
+    height?: number | string
     transparent?: boolean
+    margin?: number
+    padding?: number
+    center?: true | 'v' | 'h'
 }
 const Container: React.FC<ContainerInterface> = (props) => {
     const theme = useTheme();
-    const {width, height, children, transparent} = props;
+    const {width, height, children, transparent,margin,padding,center} = props;
 
     let styles = {};
 
@@ -42,7 +45,7 @@ const Container: React.FC<ContainerInterface> = (props) => {
     }
 
     return (
-        <Box sx={styles}>
+        <Box sx={styles} mt={margin ?? 0} p={padding ?? 0}>
             {children}
         </Box>
     );

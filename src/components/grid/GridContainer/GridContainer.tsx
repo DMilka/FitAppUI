@@ -1,14 +1,12 @@
 import React from 'react';
-import {Grid} from "@mui/material";
+import {Grid, GridProps} from "@mui/material";
 
-interface GridContainerInterface {
+interface GridContainerInterface  extends GridProps {
     children: React.ReactNode;
-    direction?: 'row' | 'row-reverse' | 'column' | 'column-reverse';
 }
 const GridContainer: React.FC<GridContainerInterface> = (props) => {
-    const {direction} = props;
     return (
-        <Grid container direction={direction ?? 'row'}>
+        <Grid container {...props}>
             {props.children}
         </Grid>
     );
