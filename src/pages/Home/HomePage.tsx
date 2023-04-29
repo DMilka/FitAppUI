@@ -1,6 +1,6 @@
 import React from 'react';
 import Container from "../../components/container/Container/Container";
-import LoginForm from "./Form/LoginForm";
+import LoginForm from "./Form/LoginForm/LoginForm";
 
 const HomePage: React.FC = () => {
     return (
