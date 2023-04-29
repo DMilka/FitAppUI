@@ -1,10 +1,12 @@
 import React from 'react';
+import Container from "../../components/container/Container/Container";
+import LoginForm from "./Form/LoginForm";
 
 const HomePage: React.FC = () => {
     return (
-        <div>
-            Home Page
-        </div>
+        <Container transparent>
+            <LoginForm/>
+        </Container>
     );
 };
 
