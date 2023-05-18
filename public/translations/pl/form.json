@@ -2,5 +2,8 @@
   "input": {
     "email": "Adres email",
     "password": "Hasło"
+  },
+  "link": {
+    "no_account_register": "Nie masz konta? Zarejestruj się"
   }
 }

@@ -1,4 +1,4 @@
-import React, {useReducer, useState} from 'react';
+import React, {useReducer} from 'react';
 import GridContainer from "../../../../components/grid/GridContainer/GridContainer";
 import GridItem from "../../../../components/grid/GridItem/GridItem";
 import TextField from "../../../../components/form/inputs/TextField/TextField";
@@ -7,6 +7,7 @@ import Container from "../../../../components/container/Container/Container";
 import Translation from "../../../../components/translate/Translation";
 import {loginFormReducer} from "./LoginFormReducer";
 import {LOGIN_FORM_CONSTANTS} from "./LoginFormConstants";
+import {Link} from "react-router-dom";
 
 
 const LoginForm = () => {
@@ -36,27 +37,26 @@ const LoginForm = () => {
         })
     }
 
-    const login = (event: React.FormEvent<HTMLFormElement>): void => {
-        event.preventDefault();
-    }
-
     return (
-        <GridContainer justifyContent={'center'} >
+        <GridContainer justifyContent={'center'}>
             <GridItem xs={12} sm={8} md={4} lg={2} margin={2}>
-                <Container height={300}>
-                    <form onSubmit={login}>
-                        <GridContainer padding={2} justifyContent={'space-between'}>
-                            <GridItem xs={12} marginTop={2}>
-                                <TextField label={<Translation trans={'form:input.email'}/>} value={emailAddressState.value} onChange={changeEmailCallback} name={'email-address'} error={!emailAddressState.valid && emailAddressState.touched}/>
-                            </GridItem>
-                            <GridItem xs={12}  marginTop={2}>
-                                <TextField label={<Translation trans={'form:input.password'}/>} value={passwordState.value} onChange={changePasswordCallback} type={'password'} name={'password'} error={!passwordState.valid && passwordState.touched}/>
-                            </GridItem>
-                            <GridItem xs={12} textAlign={'center'} marginTop={10}>
-                                <Button type="submit" label={<Translation trans={'translation:button.login'}/>} disabled={!emailAddressState.valid || !passwordState.valid}/>
-                            </GridItem>
-                        </GridContainer>
-                    </form>
+                <Container>
+                    <GridContainer padding={2} justifyContent={'space-between'}>
+                        <GridItem xs={12} marginTop={2}>
+                            <TextField label={<Translation trans={'form:input.email'}/>} value={emailAddressState.value} onChange={changeEmailCallback} name={'email-address'} error={!emailAddressState.valid && emailAddressState.touched}/>
+                        </GridItem>
+                        <GridItem xs={12}  marginTop={2}>
+                            <TextField label={<Translation trans={'form:input.password'}/>} value={passwordState.value} onChange={changePasswordCallback} type={'password'} name={'password'} error={!passwordState.valid && passwordState.touched}/>
+                        </GridItem>
+                        <GridItem xs={12} marginTop={2}>
+                            <Link to="/register">
+                                <Translation trans={'form:link.no_account_register'}/>
+                            </Link>
+                        </GridItem>
+                        <GridItem xs={12} textAlign={'center'} marginTop={10}>
+                            <Button type="submit" label={<Translation trans={'translation:button.login'}/>} disabled={!emailAddressState.valid || !passwordState.valid}/>
+                        </GridItem>
+                    </GridContainer>
                 </Container>
             </GridItem>
         </GridContainer>
