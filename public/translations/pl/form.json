@@ -4,6 +4,11 @@
     "password": "Hasło"
   },
   "link": {
-    "no_account_register": "Nie masz konta? Zarejestruj się"
+    "no_account_register": "Nie masz konta? Zarejestruj się",
+    "account_exist_login": "Masz konto? Zaloguj się",
+    "register_success": " Możesz się teraz zalogować"
+  },
+  "register": {
+    "register_success": "Pomyślnie zarejestrowano."
   }
 }

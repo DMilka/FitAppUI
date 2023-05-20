@@ -1,5 +1,6 @@
 {
   "button": {
-    "login": "Zaloguj się"
+    "login": "Zaloguj się",
+    "register": "Zarejestruj się"
   }
 }

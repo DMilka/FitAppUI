@@ -40,7 +40,7 @@ const LoginForm = () => {
     return (
         <GridContainer justifyContent={'center'}>
             <GridItem xs={12} sm={8} md={4} lg={2} margin={2}>
-                <Container>
+                <Container width={335}>
                     <GridContainer padding={2} justifyContent={'space-between'}>
                         <GridItem xs={12} marginTop={2}>
                             <TextField label={<Translation trans={'form:input.email'}/>} value={emailAddressState.value} onChange={changeEmailCallback} name={'email-address'} error={!emailAddressState.valid && emailAddressState.touched}/>

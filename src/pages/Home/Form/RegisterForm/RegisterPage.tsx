@@ -1,13 +1,13 @@
 import React from 'react';
-import {Link} from "react-router-dom";
+import {Form} from "react-router-dom";
+
+import RegisterForm from "./RegisterForm";
 
 const RegisterPage = () => {
     return (
-        <Link
-            to="/"
-        >
-            Masz konto? Zaloguj się
-        </Link>
+    <Form method={'POST'}>
+        <RegisterForm/>
+    </Form>
     );
 };
 
