@@ -11,8 +11,8 @@ interface TranslationInterface {
 }
 
 const Translation: React.FC<TranslationInterface> = (props) => {
-    const {trans, translationObject} = props;
-    const [fileContent, setFileContent] = useState<object | null>(null);
+    const {trans} = props;
+    const [fileContent] = useState<object | null>(null);
     const [finalTranslation, setFinalTranslation] = useState<string>(trans);
 
     useEffect( () => {

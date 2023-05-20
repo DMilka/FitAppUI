@@ -32,7 +32,5 @@ export async function loginAction({request}: ActionInterface) {
 }
 
 export async function registerAction({request}: ActionInterface) {
-    const data = Object.fromEntries(await request.formData());
-
     return redirect('/');
 }

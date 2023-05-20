@@ -12,7 +12,7 @@ interface ContainerInterface {
 }
 const Container: React.FC<ContainerInterface> = (props) => {
     const theme = useTheme();
-    const {width, height, children, transparent,margin,padding,center} = props;
+    const {width, height, children, transparent,margin,padding} = props;
 
     let styles = {};
 
