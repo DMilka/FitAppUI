@@ -1,10 +1,14 @@
 import React, {useState} from 'react';
 import {BottomNavigation, BottomNavigationAction} from "@mui/material";
 import Container from "../../container/Container/Container";
-import {NavigationMock} from "../../../mock/navigation/NavigationMock";
+import {navigationMock} from "../../../mock/navigation/NavigationMock";
 import Translation from "../../translate/Translation";
+import {useNavigate} from "react-router-dom";
 const MobileNavigation = () => {
-    const [activeCard, setActiveCard] = useState<number>(0);
+    const [activeCard, setActiveCard] = useState<string | null>(null);
+
+    const navigate = useNavigate();
+
     return (
         <Container>
             <div style={{position: 'fixed', bottom: 0, right: 0, left: 0}}>
@@ -13,9 +17,12 @@ const MobileNavigation = () => {
                     value={activeCard}
                     onChange={(event, newValue) => {
                         setActiveCard(newValue);
+                        navigate(newValue);
                     }}
                 >
-                    {NavigationMock.map(navItem => <BottomNavigationAction key={navItem.name} label={<Translation trans={navItem.name} />} icon={<navItem.icon />} /> )}
+                    {navigationMock.map(navItem =>
+                            <BottomNavigationAction value={navItem.path} key={navItem.name} label={<Translation trans={navItem.name}/>} icon={navItem.icon} />
+                    )}
                 </BottomNavigation>
             </div>
         </Container>

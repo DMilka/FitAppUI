@@ -4,6 +4,7 @@ import Dashboard from "../../pages/Dashboard/Dashboard";
 import {checkUserLogged, checkUserNotLogged, loginAction,registerAction} from "../auth/AuthenticatorHelper";
 import LoginPage from "../../pages/Home/Form/LoginForm/LoginPage";
 import RegisterPage from "../../pages/Home/Form/RegisterForm/RegisterPage";
+import { navigationRouterChildren} from "../../mock/navigation/NavigationMock";
 
 const router = createBrowserRouter([
     {
@@ -19,7 +20,8 @@ const router = createBrowserRouter([
         path: 'dashboard',
         element: <Dashboard/>,
         loader: checkUserNotLogged,
-        children: []
+        children: navigationRouterChildren
+
     }
 ])
 

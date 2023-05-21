@@ -1,8 +1,9 @@
 import React from 'react';
 import Container from "../../container/Container/Container";
 import {Drawer, List, ListItem, ListItemButton, ListItemIcon, ListItemText} from "@mui/material";
-import {NavigationMock} from "../../../mock/navigation/NavigationMock";
+import {navigationMock} from "../../../mock/navigation/NavigationMock";
 import Translation from "../../translate/Translation";
+import { Link } from 'react-router-dom';
 const DesktopNavigation = () => {
     return (
         <Container width={200} height={'100vh'}>
@@ -19,14 +20,16 @@ const DesktopNavigation = () => {
                 anchor="left"
             >
                 <List>
-                    {NavigationMock.map((navItem, index) => (
+                    {navigationMock.map((navItem, index) => (
                         <ListItem key={navItem.name} disablePadding>
-                            <ListItemButton>
-                                <ListItemIcon>
-                                    {<navItem.icon/>}
-                                </ListItemIcon>
-                                <ListItemText primary={<Translation trans={navItem.name} />} />
-                            </ListItemButton>
+                            <Link to={navItem.path}>
+                                <ListItemButton>
+                                    <ListItemIcon>
+                                        {navItem.icon}
+                                    </ListItemIcon>
+                                    <ListItemText primary={<Translation trans={navItem.name} />} />
+                                </ListItemButton>
+                            </Link>
                         </ListItem>
                     ))}
                 </List>
