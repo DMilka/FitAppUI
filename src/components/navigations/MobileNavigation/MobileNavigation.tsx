@@ -1,7 +1,8 @@
 import React, {useState} from 'react';
 import {BottomNavigation, BottomNavigationAction} from "@mui/material";
-import AccessibilityNewIcon from '@mui/icons-material/AccessibilityNew';
 import Container from "../../container/Container/Container";
+import {NavigationMock} from "../../../mock/navigation/NavigationMock";
+import Translation from "../../translate/Translation";
 const MobileNavigation = () => {
     const [activeCard, setActiveCard] = useState<number>(0);
     return (
@@ -14,9 +15,7 @@ const MobileNavigation = () => {
                         setActiveCard(newValue);
                     }}
                 >
-                    <BottomNavigationAction label="Diet" icon={<AccessibilityNewIcon />} />
-                    <BottomNavigationAction label="Training" icon={<AccessibilityNewIcon />} />
-                    <BottomNavigationAction label="Profile" icon={<AccessibilityNewIcon />} />
+                    {NavigationMock.map(navItem => <BottomNavigationAction key={navItem.name} label={<Translation trans={navItem.name} />} icon={<navItem.icon />} /> )}
                 </BottomNavigation>
             </div>
         </Container>
